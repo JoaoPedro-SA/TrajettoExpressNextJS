@@ -1,15 +1,23 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./login.module.css";
 
 export default function LoginPage() {
   return (
     <div className={styles.loginContainer}>
-      {/* Lado com logo */}
+      {/* Lado que tem o logo */}
       <div className={styles.leftSide}>
         <div className={styles.brand}>
-          <h1>TRAJETTO</h1>
+          {/* <h1>TRAJETTO</h1> */}
+           <Image
+            src="/logobranco.png"
+            alt="Trajetto Express"
+            width={300}
+            height={100}
+            priority
+          />
           <p>Conectando lugares, entregando confiança.</p>
         </div>
       </div>
@@ -17,10 +25,11 @@ export default function LoginPage() {
       {/*formulário*/}
       <div className={styles.rightSide}>
         <div className={styles.formBox}>
-          <p className={styles.subtitle}>
+
+          {/* <p className={styles.subtitle}>
             Ainda não tem conta?{" "}
-            <a href="#" className={styles.linkHighlight}>Criar conta</a>
-          </p>
+            <a href="#" className={styles.linkHighlight}>Criar conta </a>
+          </p> */}
 
           <h2 className={styles.title}>Faça login em sua conta</h2>
 
@@ -35,6 +44,12 @@ export default function LoginPage() {
               <a href="#" className={styles.smallLink}>Esqueci minha senha</a>
             </div>
 
+            <p className={styles.subtitle}>
+              <br></br>
+              Ainda não tem conta?{" "}
+              <a href="#" className={styles.linkHighlight}>Criar conta </a>
+            </p>
+
             <button type="submit" className={styles.loginButton}>
               Entrar 
             </button>
@@ -48,3 +63,5 @@ export default function LoginPage() {
     </div>
   );
 }
+
+
