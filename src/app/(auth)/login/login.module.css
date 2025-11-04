@@ -1,0 +1,163 @@
+.login-body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  background: #fff;
+}
+
+.loginContainer {
+  display: flex;
+  height: 100vh;
+}
+
+/* Lado esquerdo */
+.leftSide {
+  flex: 1;
+  background-color: #000066;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+
+.brand h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.brand p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+.brand img {
+  margin-bottom: 1rem;
+  max-width: 600px;
+  height: auto;
+}
+
+
+/* login */
+.rightSide {
+  flex: 2;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.formBox {
+  width: 100%;
+  max-width: 400px;
+}
+
+.subtitle {
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.linkHighlight {
+  color: #000066;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.linkHighlight:hover {
+  text-decoration: underline;
+}
+
+.title {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form label {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.form input {
+  margin-top: 0.3rem;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.smallLink {
+  color: #555;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.smallLink:hover {
+  text-decoration: underline;
+}
+
+.loginButton {
+  margin-top: 0.1rem;
+  padding: 0.8rem;
+  background-color: #000066;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.loginButton:hover {
+  background-color: #000069;
+}
+
+.backLink {
+  display: block;
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #3b006a;
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+/* Responsivo */
+@media (max-width: 850px) {
+  .loginContainer {
+    flex-direction: column;
+  }
+
+  .leftSide {
+    height: 30dvh;
+    padding: 2rem;
+  }
+
+  .rightSide {
+    height: 70dvh;
+  }
+
+  .formBox {
+    width: 100%;
+    max-width: 350px;
+  }
+}
