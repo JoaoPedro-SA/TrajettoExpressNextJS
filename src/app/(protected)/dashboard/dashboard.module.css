@@ -2,11 +2,12 @@
   display: flex;
   min-height: 100vh;
   background: #f4f6f8;
+  position: relative;
 }
 
 /* menu lateral*/
 .sidebar {
-  width: 260px;
+  width: 270px;
   background: #000066;
   color: #fff;
   display: flex;
@@ -15,11 +16,15 @@
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
   position: fixed;
   height: 100vh;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
 }
 
 .sidebar h3 {
-  font-size: 1.4rem;
-  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -27,6 +32,7 @@
 .sidebar ul {
   list-style: none;
   padding: 0;
+  padding-bottom: 25rem;
 }
 
 .sidebar li {
@@ -48,7 +54,7 @@
   color: #000000;
 }
 
-/*logout */
+/* botão logout*/
 .logout {
   margin-top: auto;
   color: #ff6b6b !important;
@@ -58,7 +64,7 @@
   background: #2c1a1a;
 }
 
-/* logo trajetto*/
+/*logo trajetto*/
 .logoBox {
   display: flex;
   justify-content: center;
@@ -67,13 +73,58 @@
 }
 
 .logo {
-  max-width: 200px;
+  max-width: 160px;
   height: auto;
+  filter: brightness(0) invert(1);
 }
 
-
+/* conteudo principal */
 .mainContent {
   flex: 1;
   padding: 3rem;
   margin-left: 260px;
+  width: 100%;
+  transition: margin-left 0.3s;
+}
+
+/* botão habilita menu mobile */
+.menuToggle {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  right: 1rem; 
+  background: #000066;
+  color: white;
+  border: none;
+  font-size: 1.8rem;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  z-index: 1100;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.menuToggle:hover {
+  background: #0505b9;
+}
+
+/* responsivo */
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .mainContent {
+    margin-left: 0;
+    padding: 2rem 1rem;
+    padding-top: 4rem;
+  }
+
+  .menuToggle {
+    display: block;
+  }
 }
