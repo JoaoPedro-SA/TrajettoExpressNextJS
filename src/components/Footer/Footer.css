@@ -4,6 +4,10 @@
   padding: 2rem 1rem;
 }
 
+#mensagem {
+  display: none;
+}
+
 .footer-container {
   display: flex;
   justify-content: space-between;

@@ -1,5 +1,6 @@
 "use client";
 import { FiUser } from "react-icons/fi";
+import "./Header.css";
 
 export default function LoginButton() {
   return (

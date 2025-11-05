@@ -14,16 +14,28 @@ export default function Header() {
     <header className="header">
       <div className="header-container">
         <div className="logo">
-          <img src="/logo.png" alt="Trajetto Express" />
+          <Link href="/">
+            <img src="/logo.png" alt="Trajetto Express" />
+          </Link>
         </div>
 
         <nav className={`nav ${isOpen ? "open" : ""}`}>
           <ul className="nav-list">
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/servicos">Serviços</Link></li>
-            <li><Link href="/planos">Planos</Link></li>
-            <li><Link href="/historia">Nossa história</Link></li>
-            <li><Link href="/sustentabilidade">Sustentabilidade</Link></li>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/servicos">Serviços</Link>
+            </li>
+            <li>
+              <Link href="/planos">Planos</Link>
+            </li>
+            <li>
+              <Link href="/historia">Nossa história</Link>
+            </li>
+            <li>
+              <Link href="/sustentabilidade">Sustentabilidade</Link>
+            </li>
           </ul>
         </nav>
 
