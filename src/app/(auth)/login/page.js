@@ -103,7 +103,7 @@ export default function LoginPage() {
             <p className={styles.subtitle}>
               <br />
               Ainda não tem conta?{" "}
-              <a href="#" className={styles.linkHighlight}>
+              <a href="/conta" className={styles.linkHighlight}>
                 Criar conta
               </a>
             </p>
