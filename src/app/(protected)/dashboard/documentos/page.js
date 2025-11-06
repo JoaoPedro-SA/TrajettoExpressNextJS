@@ -1,6 +1,5 @@
 "use client";
 
-
 import styles from "./documentos.module.css";
 
 export default function DocumentosPage() {
@@ -30,9 +29,9 @@ export default function DocumentosPage() {
 
   return (
     <section>
-      <h1>Consulta de Documentos</h1>
 
       <table className={styles.tabela}>
+        <h1>Consulta de Documentos</h1>
         <tbody>
           <tr>
             <th className={styles.celula}>Documento Veículos</th>
