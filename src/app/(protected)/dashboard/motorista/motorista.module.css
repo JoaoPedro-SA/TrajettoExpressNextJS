@@ -26,20 +26,20 @@
 }
 
 /*formulario*/
-.formVeiculo {
+.formMotorista {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
 
-.formVeiculo input {
+.formMotorista input {
   padding: 0.6rem;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
 }
 
-.formVeiculo button {
+.formMotorista button {
   grid-column: span 2;
   padding: 0.8rem;
   background: #0202a8;
@@ -52,28 +52,28 @@
   transition: background 0.3s;
 }
 
-.formVeiculo button:hover {
+.formMotorista button:hover {
   background: #0303ce;
 }
 
 @media (max-width: 600px) {
-  .formVeiculo {
+  .formMotorista {
     grid-template-columns: 1fr;
   }
 }
 
 /*lista de veiculos(get)*/
-.veiculoLista {
+.motoristasLista {
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-  width: 95%;
-  max-width: 1400px;
+  width: 98%;
+  max-width: 1600px;
   overflow-x: auto;
 }
 
-.veiculoLista h2 {
+.motoristasLista h2 {
   margin-bottom: 15px;
   color: #2c3e50;
   text-align: center;
@@ -84,47 +84,46 @@
   width: 100%;
   border-collapse: collapse;
   min-width: 1200px;
+  max-width: 1600px;
+ 
 }
 
 /* .tabela thead {
   background-color: #2980b9;
   color: #fff;
 } */
-
-/* .tabela thead th {
+/* 
+.tabela thead th {
   padding: 8px 5px;
-  text-align: left;
+  text-align: cen;
   font-size: 12px;
 } */
 
-.tabelaVeiculos thead th {
+.tabelaMotoristas thead th {
   background-color: #bfbfc2;
   color: #000000;
+
 }
 
-.tabelaVeiculos {
+.tabelaMotoristas {
   width: 100%;
   border-collapse: collapse;
+  text-align: center;
+  max-width: 1500px;
 }
 
-.tabelaVeiculos th,
-.tabelaVeiculos td {
+.tabelaMotoristas th,
+.tabelaMotoristas td {
   border: 1px solid #e9e9e9;
-    /* border-top: 0px;
-  border-bottom: 0px; */
   padding: 8px;
 }
-
-
-
-
-
 
 .tabela tbody td {
   padding: 8px 5px;
   border-bottom: 1px solid #ddd;
   font-size: 12px;
   word-break: break-word;
+  align-items: center;
 }
 
 .tabela tbody tr:nth-child(even) {
@@ -135,9 +134,52 @@
   background-color: #f1f7fd;
 }
 
+
+
+
+/* pop-up */
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 999;
+}
+
+.popupContent {
+  background: white;
+  color: #333;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.popupContent ul {
+  list-style: none;
+  padding: 0;
+}
+
+.popupContent li {
+  margin-bottom: 6px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 4px;
+}
+
+
+
 /*botões*/
 .btnEditar,
-.btnExcluir {
+.btnExcluir,
+.btnVisualizar,
+.btnFechar {
   padding: 6px 10px;
   border: none;
   border-radius: 5px;
@@ -149,7 +191,7 @@
 }
 
 .btnEditar {
-  background-color: #f39c12;
+  background-color: #fda619;
 }
 
 .btnEditar:hover {
@@ -163,3 +205,18 @@
 .btnExcluir:hover {
   background-color: #c0392b;
 }
+
+.btnVisualizar {
+  background-color: rgb(2, 179, 2);
+}
+.btnVisualizar:hover {
+  background-color: rgb(0, 128, 0);
+}
+
+.btnFechar {
+  background-color: rgb(2, 179, 2);
+}
+.btnFechar:hover {
+  background-color: rgb(0, 128, 0);
+}
+

@@ -28,6 +28,11 @@ export default function motoristaPage() {
     estado: "",
   });
 
+  const [visualizando, setVisualizando] = useState(null);
+  const [mostrarPopup, setMostrarPopup] = useState(false);
+  
+
+
   useEffect(() => {
     carregarMotoristas();
   }, []);
@@ -49,40 +54,64 @@ export default function motoristaPage() {
 
 
 
-  // Ajustar
+  // AJUSTAR AJUSTAR AJUSTAR
+  // async function handleSubmit(e) {
+  //   e.preventDefault();
+  //   const method = editando ? "PUT" : "POST";
+  //   const url = editando ? `${apiUrl}/${editando}` : apiUrl;
+
+  //   try {
+  //     const response = await fetch(url, {
+  //       method,
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+
+  //       }),
+  //     });
+
+  //     if (!response.ok) {
+  //       alert("Erro ao salvar motorista.");
+  //       return;
+  //     }
+
+  //     limparFormulario();
+  //     carregarMotoristas();
+  //     alert(editando ? "Motorista atualizado!" : "Motorista cadastrado!");
+  //   } catch (error) {
+  //     console.error("Erro ao salvar motoristas:", error);
+  //   }
+  // }
+  // AJUSTAR AJUSTAR AJUSTAR
+
   async function handleSubmit(e) {
-    e.preventDefault();
-    const method = editando ? "PUT" : "POST";
-    const url = editando ? `${apiUrl}/${editando}` : apiUrl;
+  e.preventDefault();
+  const method = editando ? "PUT" : "POST";
+  const url = editando ? `${apiUrl}/${editando}` : apiUrl;
 
-    try {
-      const response = await fetch(url, {
-        method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          peso_maximo_kg: parseInt(form.peso_maximo_kg) || 0,
-          ano_modelo: parseInt(form.ano_modelo) || 0,
-          ano_fabricacao: parseInt(form.ano_fabricacao) || 0,
-        }),
-      });
+  try {
+    const response = await fetch(url, {
+      method,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...form,
+        salario: parseFloat(form.salario) || 0,
+      }),
+    });
 
-      if (!response.ok) {
-        alert("Erro ao salvar veículo.");
-        return;
-      }
-  // Ajustar
-
-
-
-
-      limparFormulario();
-      carregarVeiculos();
-      alert(editando ? "Veículo atualizado!" : "Veículo cadastrado!");
-    } catch (error) {
-      console.error("Erro ao salvar veículo:", error);
+    if (!response.ok) {
+      alert("Erro ao salvar motorista.");
+      return;
     }
+
+    limparFormulario();
+    carregarMotoristas();
+    alert(editando ? "Motorista atualizado!" : "Motorista cadastrado!");
+  } catch (error) {
+    console.error("Erro ao salvar motoristas:", error);
   }
+}
+
+
 
   async function carregarParaEdicao(id) {
     try {
@@ -97,7 +126,7 @@ export default function motoristaPage() {
   }
 
   async function deletarMotoristas(id) {
-    if (!confirm("Tem certeza que deseja excluir este veículo?")) return;
+    if (!confirm("Tem certeza que deseja excluir este motorista?")) return;
 
     try {
       const response = await fetch(`${apiUrl}/${id}`, { method: "DELETE" });
@@ -108,6 +137,18 @@ export default function motoristaPage() {
       console.error("Erro ao excluir motorista:", error);
     }
   }
+
+  async function VisualizarMotorista(id) {
+  try {
+    const response = await fetch(`${apiUrl}/${id}`);
+    const data = await response.json();
+    setVisualizando(data);
+    setMostrarPopup(true);
+  } catch (error) {
+    console.error("Erro ao visualizar motorista:", error);
+  }
+}
+
 
   function limparFormulario() {
     setForm({
@@ -137,16 +178,17 @@ export default function motoristaPage() {
       <div className={styles.container}>
         <h1>Cadastro de Motoristas</h1>
 
-        <form onSubmit={handleSubmit} className={styles.formVeiculo}>
+        <form onSubmit={handleSubmit} className={styles.formMotorista}>
           <input name="nome" placeholder="Nome" value={form.nome} onChange={handleChange} required />
           <input name="cpf" placeholder="CPF" value={form.cpf} onChange={handleChange} required />
           <input name="rg" placeholder="RG" value={form.rg} onChange={handleChange} required />
           <input name="salario" placeholder="Salário" value={form.salario} onChange={handleChange} required />
-          <input name="nascimento" placeholder="Data Nascimento" value={form.nascimento} onChange={handleChange} required />
-          <input name="cnh" placeholder="CNH" value={form.cnh} onChange={handleChange} required />
+          <input type="date" name="data_nascimento" value={form.data_nascimento} onChange={handleChange} required />
+          <input name="numero_cnh" placeholder="CNH" value={form.numero_cnh} onChange={handleChange} required />
           <input name="categoria_cnh" placeholder="Categoria CNH" value={form.categoria_cnh} onChange={handleChange} required />
-          <input name="validade_cnh" placeholder="Validade CNH" value={form.validade_cnh} onChange={handleChange} />
+          <input type="date" name="validade_cnh" placeholder="Validade CNH" value={form.validade_cnh} onChange={handleChange} />
           <input name="telefone" placeholder="Telefone" value={form.telefone} onChange={handleChange} />
+          <input name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
           <input name="cep" placeholder="CEP" value={form.cep} onChange={handleChange} />
           <input name="logradouro" placeholder="Logradouro" value={form.logradouro} onChange={handleChange} />
           <input name="numero" placeholder="Número" value={form.numero} onChange={handleChange} />
@@ -159,6 +201,23 @@ export default function motoristaPage() {
             {editando ? "Salvar Alterações" : "Cadastrar motorista"}
           </button>
         </form>
+
+          {mostrarPopup && visualizando && (
+            <div className={styles.popupOverlay}>
+              <div className={styles.popupContent}>
+                <h3>Detalhes do Motorista</h3>
+                <ul>
+                  {Object.entries(visualizando).map(([key, value]) => (
+                    <li key={key}>
+                      <strong>{key.replace("_", " ")}:</strong> {value || "—"}
+                    </li>
+                  ))}
+                </ul>
+                <button className={styles.btnFechar} onClick={() => setMostrarPopup(false)}>Fechar</button>
+              </div>
+            </div>
+          )}
+
       </div>
 
       <div className={styles.motoristasLista}>
@@ -170,21 +229,11 @@ export default function motoristaPage() {
               <th>ID</th>
               <th>Nome</th>
               <th>CPF</th>
-              <th>RG</th>
-              <th>Salário</th>
-              <th>Nascimento</th>
-              <th>CNH</th>
-              <th>Cat. CNH</th>
-              <th>Validade CNH (kg)</th>
+              <th>Categoria CNH</th>
+              <th>Validade CNH</th>
               <th>Telefone</th>
               <th>E-mail</th>
-              <th>CEP</th>
-              <th>Logradouro</th>
-              <th>Número</th>
-              <th>Complemento</th>
-              <th>Bairro</th>
-              <th>Cidade</th>
-              <th>Estado</th>
+              <th>Ações</th>
             </tr>
           </thead>
           <tbody className={styles.tabelaCorpo} id="tabela-motoristas">
@@ -193,27 +242,19 @@ export default function motoristaPage() {
                 <td>{v.id}</td>
                 <td>{v.nome}</td>
                 <td>{v.cpf}</td>
-                <td>{v.rg}</td>
-                <td>{v.salario}</td>
-                <td>{v.data_nascimento}</td>
-                <td>{v.numero_cnh}</td>
                 <td>{v.categoria_cnh}</td>
                 <td>{v.validade_cnh}</td>
                 <td>{v.telefone}</td>
                 <td>{v.email}</td>
-                <td>{v.cep}</td>
-                <td>{v.logradouro}</td>
-                <td>{v.numero}</td>
-                <td>{v.complemento}</td>
-                <td>{v.bairro}</td>
-                <td>{v.cidade}</td>
-                <td>{v.estado}</td>
                 <td>
                   <button className={styles.btnEditar} onClick={() => carregarParaEdicao(v.id)}>
                     Editar
                   </button>
-                  <button className={styles.btnExcluir} onClick={() => deletarVeiculo(v.id)}>
+                  <button className={styles.btnExcluir} onClick={() => deletarMotoristas(v.id)}>
                     Excluir
+                  </button>
+                  <button className={styles.btnVisualizar} onClick={() => VisualizarMotorista(v.id)}>
+                    Visualizar
                   </button>
                 </td>
               </tr>
