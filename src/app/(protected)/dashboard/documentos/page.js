@@ -36,11 +36,9 @@ export default function DocumentosPage() {
 
   async function EnviarPorEmail(id) {
     try {
-      // const destinatario = "antunesjoaopedro3@gmail.com"; // ou prompt("Digite o e-mail do destinatário:")
       const destinatario = prompt("Digite o e-mail do destinatário:");
       if (!destinatario) return;
 
-      // 🔹 Determina a URL do PDF
       let url = "";
       let nome = "";
       if (id === 1) { url = "http://127.0.0.1:5036/relatorio/veiculos"; nome = "veiculos.pdf"; }
@@ -50,12 +48,10 @@ export default function DocumentosPage() {
       else if (id === 5) { url = "http://127.0.0.1:5036/relatorio/faturamento"; nome = "faturamento.pdf"; }
       else return alert("Erro ao consultar");
 
-      // 🔹 Busca o PDF e converte em Base64
       const response = await fetch(url);
       const blob = await response.blob();
       const base64PDF = await blobToBase64(blob);
 
-      // 🔹 Envia via JSON para sua API Flask
       const envio = await fetch("http://127.0.0.1:5036/envia/Email", {
         method: "POST",
         headers: {
@@ -84,9 +80,9 @@ export default function DocumentosPage() {
   }
 
   return (
-    <section>
+    <section className={styles.tabela}>
       <h1>Consulta de Documentos</h1>
-      <table className={styles.tabela}>
+      <table >
         <tbody>
           <tr>
             <th className={styles.celula}>Documento Veículos</th>
