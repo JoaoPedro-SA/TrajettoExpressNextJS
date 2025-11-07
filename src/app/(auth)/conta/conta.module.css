@@ -1,0 +1,49 @@
+.login-body {
+     margin: 0;
+     font-family: "Montserrat", sans-serif;
+     background: #fff;
+}
+
+.loginContainer {
+     display: flex;
+     height: 100vh;
+}
+
+/* Lado esquerdo */
+.leftSide {
+     flex: 1;
+     background-color: #000066;
+     color: white;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     padding: 3rem;
+}
+
+.brand h1 {
+     font-size: 2.2rem;
+     margin-bottom: 1rem;
+}
+
+.brand p {
+     font-size: 1.1rem;
+     line-height: 1.6;
+     max-width: 300px;
+}
+
+.brand img {
+     margin-bottom: 1rem;
+     max-width: 600px;
+     height: auto;
+}
+
+
+.rightSide {
+     flex: 2;
+     background-color: #fff;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 2rem;
+}
