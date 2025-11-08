@@ -1,4 +1,4 @@
-import styles from "./clienteMotorista.module.css";
+import styles from "./cliente.module.css";
 
 export default function clienteTransportadoraPage() {
   return (
