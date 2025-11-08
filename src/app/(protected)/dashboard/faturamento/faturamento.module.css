@@ -1,0 +1,342 @@
+/* ==== GERAL ==== */
+.dashboard {
+     background: linear-gradient(180deg, #f9fafb 0%, #e0e7ff 100%);
+     display: flex;
+     flex-direction: column;
+     gap: 50px;
+     width: 100%;
+     padding: 32px 24px;
+     font-family: "Inter", system-ui, -apple-system, sans-serif;
+     color: #1e293b;
+     box-sizing: border-box;
+}
+
+/* ==== GRÁFICO ==== */
+.graficoContainer {
+     width: 100%;
+     height: 420px;
+     background: #ffffff;
+     border-radius: 16px;
+     padding: 28px;
+     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+     transition: all 0.25s ease;
+     border: 1px solid #e2e8f0;
+}
+
+.graficoContainer:hover {
+     transform: translateY(-4px);
+     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ==== TABELAS ==== */
+.tabela,
+.tabelaZebrada {
+     width: 100%;
+     border-collapse: collapse;
+     text-align: center;
+     font-size: 0.95rem;
+     border-radius: 10px;
+     overflow: hidden;
+     background-color: #fff;
+}
+
+.tabela th,
+.tabela td,
+.tabelaZebrada th,
+.tabelaZebrada td {
+     border: 1px solid #e5e7eb;
+     padding: 12px 14px;
+     transition: background 0.2s ease;
+}
+
+.tabela th,
+.tabelaZebrada th {
+     background: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 100%);
+     color: #1e3a8a;
+     font-weight: 600;
+     text-transform: uppercase;
+     font-size: 0.85rem;
+     letter-spacing: 0.5px;
+}
+
+.tabela td,
+.tabelaZebrada td {
+     color: #334155;
+}
+
+/* Efeito zebrado + hover */
+.linhaPar {
+     background-color: #f9fafb;
+}
+
+.linhaImpar {
+     background-color: #eef2ff;
+}
+
+.tabela tr:hover td,
+.tabelaZebrada tr:hover td {
+     background-color: #e0f2fe;
+}
+
+/* ==== CARDS ==== */
+.cardsContainer {
+     display: flex;
+     gap: 20px;
+     flex-wrap: wrap;
+     justify-content: space-evenly;
+}
+
+.card {
+     background: #ffffff;
+     border-radius: 16px;
+     padding: 22px;
+     text-align: center;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+     flex: 1;
+     min-width: 180px;
+     transition: all 0.25s ease;
+     border: 1px solid #e2e8f0;
+}
+
+.card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+     margin: 0;
+     color: #1d4ed8;
+     font-size: 1.1rem;
+     font-weight: 600;
+}
+
+.card p {
+     margin-top: 10px;
+     color: #0f172a;
+     font-weight: 700;
+     font-size: 1.05rem;
+}
+
+/* ==== BARRA DE PROGRESSO ==== */
+.barraFundo {
+     background: #f1f5f9;
+     border-radius: 10px;
+     height: 10px;
+     width: 100%;
+     overflow: hidden;
+     position: relative;
+}
+
+
+
+@keyframes preencher {
+     from {
+          width: 0;
+     }
+
+     to {
+          width: var(--largura, 100%);
+     }
+}
+
+/* ==== KPI ==== */
+.kpiContainer {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+     gap: 20px;
+}
+
+.kpiCard {
+     background: #ffffff;
+     border-left: 5px solid #6366f1;
+     border-radius: 12px;
+     padding: 18px;
+     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+     transition: transform 0.25s ease;
+     border: 1px solid #e2e8f0;
+}
+
+.kpiCard:hover {
+     transform: translateY(-3px);
+}
+
+.kpiCard h3 {
+     margin: 0;
+     font-size: 1rem;
+     color: #475569;
+}
+
+.kpiCard p {
+     margin-top: 6px;
+     font-weight: 700;
+     color: #111827;
+     font-size: 1.25rem;
+}
+
+/* ==== LISTAS ==== */
+.listaCompacta {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+}
+
+.listaCompacta li {
+     display: flex;
+     justify-content: space-between;
+     padding: 8px 0;
+     border-bottom: 1px solid #e2e8f0;
+     color: #1e293b;
+     font-weight: 500;
+}
+
+/* ==== TABELAS CONTAINER ==== */
+.containerTabelas {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     gap: 24px;
+     width: 100%;
+     margin-top: 20px;
+}
+
+.tabelaWrapper {
+     flex: 1 1 calc(50% - 20px);
+     background-color: #ffffff;
+     border-radius: 14px;
+     padding: 20px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+     transition: all 0.25s ease;
+     min-width: 350px;
+     border: 1px solid #e2e8f0;
+}
+
+.tabelaWrapper:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.tabelaWrapper h2 {
+     text-align: center;
+     color: #1e3a8a;
+     font-size: 1.15rem;
+     margin-bottom: 14px;
+     border-bottom: 2px solid #06b6d4;
+     padding-bottom: 8px;
+     font-weight: 600;
+}
+
+
+/* ==== CONJUNTOS DE TABELAS ==== */
+.containerTabelas {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     gap: 24px;
+     width: 100%;
+     margin-top: 20px;
+}
+
+/* 3 tabelas por linha em telas grandes */
+.tabelaWrapper {
+     flex: 1 1 calc(33.333% - 24px);
+     background-color: #ffffff;
+     border-radius: 14px;
+     padding: 20px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+     transition: all 0.25s ease;
+     min-width: 320px;
+     border: 1px solid #e2e8f0;
+     box-sizing: border-box;
+}
+
+.tabelaWrapper:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.tabelaWrapper h2 {
+     text-align: center;
+     color: #1e3a8a;
+     font-size: 1.1rem;
+     margin-bottom: 12px;
+     border-bottom: 2px solid #06b6d4;
+     padding-bottom: 6px;
+     font-weight: 600;
+}
+
+.tabelaWrapper {
+     width: 100%;
+     margin-top: 2rem;
+}
+
+.tabela {
+     width: 100%;
+     border-collapse: collapse;
+     text-align: left;
+}
+
+.tabela th,
+.tabela td {
+     padding: 8px 12px;
+     border-bottom: 1px solid #ddd;
+}
+
+.barraFundo {
+     position: relative;
+     background-color: #eee;
+     border-radius: 8px;
+     height: 18px;
+     width: 100%;
+}
+
+.barraProgresso {
+     height: 100%;
+     border-radius: 8px;
+     transition: width 0.4s ease;
+}
+
+.valorSatisfacao {
+     position: absolute;
+     right: 8px;
+     top: 0;
+     font-size: 0.8rem;
+     color: #333;
+}
+
+
+
+
+/* ==== RESPONSIVIDADE ==== */
+@media (max-width: 1200px) {
+
+     /* 2 por linha */
+     .tabelaWrapper {
+          flex: 1 1 calc(50% - 20px);
+     }
+}
+
+@media (max-width: 800px) {
+
+     /* 1 por linha */
+     .tabelaWrapper {
+          flex: 1 1 100%;
+     }
+}
+
+
+
+@media (max-width: 600px) {
+     .graficoContainer {
+          height: 320px;
+          padding: 16px;
+     }
+
+     .card {
+          min-width: 150px;
+     }
+
+     .tabela th,
+     .tabela td {
+          padding: 8px;
+     }
+}
