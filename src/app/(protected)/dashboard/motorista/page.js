@@ -138,7 +138,7 @@ export default function motoristaPage() {
     }
   }
 
-  async function VisualizarMotorista(id) {
+  async function DetalhesMotorista(id) {
   try {
     const response = await fetch(`${apiUrl}/${id}`);
     const data = await response.json();
@@ -253,8 +253,8 @@ export default function motoristaPage() {
                   <button className={styles.btnExcluir} onClick={() => deletarMotoristas(v.id)}>
                     Excluir
                   </button>
-                  <button className={styles.btnVisualizar} onClick={() => VisualizarMotorista(v.id)}>
-                    Visualizar
+                  <button className={styles.btnDetalhes} onClick={() => DetalhesMotorista(v.id)}>
+                    Exibir
                   </button>
                 </td>
               </tr>

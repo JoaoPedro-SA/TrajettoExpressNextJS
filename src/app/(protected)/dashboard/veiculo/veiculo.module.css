@@ -118,9 +118,6 @@
 
 
 
-
-
-
 .tabela tbody td {
   padding: 8px 5px;
   border-bottom: 1px solid #ddd;
@@ -163,4 +160,151 @@
 
 .btnExcluir:hover {
   background-color: #c0392b;
+}
+
+
+
+
+
+
+
+@media (max-width: 820px) {
+  .pageContainer {
+    padding: 1rem 0.6rem;
+  }
+
+
+  .container {
+    max-width: 100%;
+    width: calc(100% - 1.2rem);
+    padding: 1.2rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  /* deixa o formulario com 1 coluna */
+  .formVeiculo {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 0.7rem;
+  }
+
+  .formVeiculo input,
+  .formVeiculo select,
+  .formVeiculo textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.95rem;
+    padding: 0.55rem;
+  }
+
+
+  .formVeiculo button {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 0.95rem;
+  }
+
+  .veiculoLista {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    overflow-x: auto;
+    box-sizing: border-box;
+  }
+
+ 
+  .tabelaVeiculos {
+    min-width: 700px; 
+    font-size: 13px;
+  }
+
+  .tabelaVeiculos th,
+  .tabelaVeiculos td {
+    padding: 8px 6px;
+  }
+
+  .btnEditar,
+  .btnExcluir,
+  .btnVisualizar {
+    padding: 5px 8px;
+    font-size: 11px;
+    margin-right: 4px;
+  }
+
+ /* ajusta o pop-up */
+  .popupContent {
+    width: 94%;
+    max-height: 86vh;
+    overflow-y: auto;
+  }
+}
+
+/* telas pequenas */
+@media (max-width: 420px) {
+  .container h1 {
+    font-size: 20px;
+  }
+
+  .formVeiculo input {
+    font-size: 0.9rem;
+    padding: 0.45rem;
+  }
+
+  .veiculoLista {
+    padding: 0.8rem;
+  }
+
+  .pageContainer, .container, .veiculoLista {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+
+/*Versão mais compacta*/
+@media (max-width: 768px) {
+  /* Esconde colunas */
+  .tabelaVeiculos th:nth-child(n+4):not(:last-child),
+  .tabelaVeiculos td:nth-child(n+4):not(:last-child) {
+    display: none;
+  }
+
+  /* mostra id e placa e modelo */
+  .tabelaVeiculos th:nth-child(2),
+  .tabelaVeiculos td:nth-child(2),
+  .tabelaVeiculos th:nth-child(3),
+  .tabelaVeiculos td:nth-child(3) {
+    display: table-cell;
+  }
+
+  /* mostra os botões */
+  .tabelaVeiculos th:last-child,
+  .tabelaVeiculos td:last-child {
+    display: table-cell;
+  }
+
+  
+  .tabelaVeiculos th,
+  .tabelaVeiculos td {
+    padding: 8px 6px;
+    font-size: 13px;
+    text-align: left;
+  }
+
+  .tabelaVeiculos {
+    width: 100%;
+    min-width: auto;
+    table-layout: auto;
+  }
+
+  .tabelaVeiculos tr {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .btnEditar,
+  .btnExcluir {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
 }

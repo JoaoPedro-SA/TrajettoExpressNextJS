@@ -101,7 +101,7 @@ export default function ClientesPage() {
     }
   }
 
-  async function VisualizarCliente(id) {
+  async function DetalhesCliente(id) {
   try {
     const response = await fetch(`${apiUrl}/${id}`);
     const data = await response.json();
@@ -207,8 +207,8 @@ export default function ClientesPage() {
                   <button className={styles.btnExcluir} onClick={() => deletarCliente(v.id)}>
                     Excluir
                   </button>
-                  <button className={styles.btnVisualizar} onClick={() => VisualizarCliente(v.id)}>
-                    Visualizar
+                  <button className={styles.btnDetalhes} onClick={() => DetalhesCliente(v.id)}>
+                    Exibir
                   </button>
                 </td>
               </tr>
