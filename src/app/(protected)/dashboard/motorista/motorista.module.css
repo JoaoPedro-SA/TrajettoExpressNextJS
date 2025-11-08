@@ -88,17 +88,6 @@
  
 }
 
-/* .tabela thead {
-  background-color: #2980b9;
-  color: #fff;
-} */
-/* 
-.tabela thead th {
-  padding: 8px 5px;
-  text-align: cen;
-  font-size: 12px;
-} */
-
 .tabelaMotoristas thead th {
   background-color: #bfbfc2;
   color: #000000;
@@ -110,6 +99,7 @@
   border-collapse: collapse;
   text-align: center;
   max-width: 1500px;
+  font-size: 14px;
 }
 
 .tabelaMotoristas th,
