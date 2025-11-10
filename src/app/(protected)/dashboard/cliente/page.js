@@ -1,22 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import styles from "./motorista.module.css";
+import styles from "./cliente.module.css";
 
-const apiUrl = "http://127.0.0.1:5036/motoristas";
+const apiUrl = "http://127.0.0.1:5036/clientes";
 
-export default function motoristaPage() {
-  const [motoristas, setMotoristas] = useState([]);
+export default function ClientesPage() {
+  const [clientes, setClientes] = useState([]);
   const [editando, setEditando] = useState(null);
   const [form, setForm] = useState({
-    nome: "",
-    cpf: "",
-    rg: "",
-    salario: "",
-    data_nascimento: "",
-    numero_cnh: "",
-    categoria_cnh: "",
-    validade_cnh: "",
+    cnpj: "",
+    razao_social: "",
     telefone: "",
     email: "",
     cep: "",
@@ -34,16 +28,16 @@ export default function motoristaPage() {
 
 
   useEffect(() => {
-    carregarMotoristas();
+    carregarClientes();
   }, []);
 
-  async function carregarMotoristas() {
+  async function carregarClientes() {
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
-      setMotoristas(data);
+      setClientes(data);
     } catch (error) {
-      console.error("Erro ao carregar motoristas:", error);
+      console.error("Erro ao carregar clientes:", error);
     }
   }
 
@@ -51,7 +45,6 @@ export default function motoristaPage() {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   }
-
 
 
   async function handleSubmit(e) {
@@ -65,20 +58,19 @@ export default function motoristaPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...form,
-        salario: parseFloat(form.salario) || 0,
       }),
     });
 
     if (!response.ok) {
-      alert("Erro ao salvar motorista.");
+      alert("Erro ao salvar cliente.");
       return;
     }
 
     limparFormulario();
-    carregarMotoristas();
-    alert(editando ? "Motorista atualizado!" : "Motorista cadastrado!");
+    carregarClientes();
+    alert(editando ? "Cliente atualizado!" : "Cliente cadastrado!");
   } catch (error) {
-    console.error("Erro ao salvar motoristas:", error);
+    console.error("Erro ao salvar cliente:", error);
   }
 }
 
@@ -92,54 +84,49 @@ export default function motoristaPage() {
       setEditando(id);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (error) {
-      console.error("Erro ao carregar motorista para edição:", error);
+      console.error("Erro ao carregar cliente para edição:", error);
     }
   }
 
-  async function deletarMotoristas(id) {
-    if (!confirm("Tem certeza que deseja excluir este motorista?")) return;
+  async function deletarCliente(id) {
+    if (!confirm("Tem certeza que deseja excluir este cliente?")) return;
 
     try {
       const response = await fetch(`${apiUrl}/${id}`, { method: "DELETE" });
       if (!response.ok) throw new Error("Erro ao excluir");
-      alert("Motorista excluído com sucesso!");
-      carregarMotoristas();
+      alert("Cliente excluído com sucesso!");
+      carregarClientes();
     } catch (error) {
-      console.error("Erro ao excluir motorista:", error);
+      console.error("Erro ao excluir cliente:", error);
     }
   }
 
-  async function DetalhesMotorista(id) {
+  async function DetalhesCliente(id) {
   try {
     const response = await fetch(`${apiUrl}/${id}`);
     const data = await response.json();
     setVisualizando(data);
     setMostrarPopup(true);
   } catch (error) {
-    console.error("Erro ao visualizar motorista:", error);
+    console.error("Erro ao visualizar cliente:", error);
   }
 }
 
 
   function limparFormulario() {
     setForm({
-      nome: "",
-      cpf: "",
-      rg: "",
-      salario: "",
-      data_nascimento: "",
-      numero_cnh: "",
-      categoria_cnh: "",
-      validade_cnh: "",
-      telefone: "",
+      cnpj: "",
+      razao_social: "",
       email: "",
+      senha: "",
+      telefone: "",
       cep: "",
       logradouro: "",
       numero: "",
       complemento: "",
       bairro: "",
       cidade: "",
-      estado: "",
+      estado: ""
     });
     setEditando(null);
   }
@@ -147,21 +134,14 @@ export default function motoristaPage() {
   return (
     <div className={styles.pageContainer}>
       <div className={styles.container}>
-        <h1>Cadastro de Motoristas</h1>
+        <h1>Cadastro de Clientes</h1>
 
-        <form onSubmit={handleSubmit} className={styles.formMotorista}>
-          <h3>Dados Pessoais</h3>
-          <input name="nome" placeholder="Nome" value={form.nome} onChange={handleChange} required />
-          <input name="cpf" placeholder="CPF" value={form.cpf} onChange={handleChange} required />
-          <input name="rg" placeholder="RG" value={form.rg} onChange={handleChange} required />
-          <input name="salario" placeholder="Salário" value={form.salario} onChange={handleChange} required />
-          <input type="text" name="data_nascimento" placeholder="Data de Nascimento" value={form.data_nascimento} onFocus={(e) => (e.target.type = "date")} onBlur={(e) => { if (!e.target.value) e.target.type = "text"; }} onChange={handleChange} required/>
+        <form onSubmit={handleSubmit} className={styles.formCliente}>
+          <h3>Dados do Cliente</h3>
+          <input name="razao_social" placeholder="Razão Social" value={form.razao_social} onChange={handleChange} required />
+          <input name="cnpj" placeholder="CNPJ" value={form.cnpj} onChange={handleChange} required />
           <input name="telefone" placeholder="Telefone" value={form.telefone} onChange={handleChange} />
           <input name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
-          <h3>Habilitação</h3>
-          <input name="numero_cnh" placeholder="CNH" value={form.numero_cnh} onChange={handleChange} required />
-          <input name="categoria_cnh" placeholder="Categoria CNH" value={form.categoria_cnh} onChange={handleChange} required />
-          <input type="text" name="validade_cnh" placeholder="Validade CNH" value={form.validade_cnh} onFocus={(e) => (e.target.type = "date")} onBlur={(e) => { if (!e.target.value) e.target.type = "text"; }} onChange={handleChange} required/>
           <h3>Endereço</h3>
           <input name="logradouro" placeholder="Logradouro" value={form.logradouro} onChange={handleChange} />
           <input name="cep" placeholder="CEP" value={form.cep} onChange={handleChange} />
@@ -172,14 +152,14 @@ export default function motoristaPage() {
           <input name="estado" placeholder="UF" value={form.estado} onChange={handleChange} />
 
           <button id="btn-salvar" type="submit">
-            {editando ? "Salvar Alterações" : "Cadastrar motorista"}
+            {editando ? "Salvar Alterações" : "Cadastrar cliente"}
           </button>
         </form>
 
           {mostrarPopup && visualizando && (
             <div className={styles.popupOverlay}>
               <div className={styles.popupContent}>
-                <h3>Detalhes do Motorista</h3>
+                <h3>Detalhes do Cliente</h3>
                 <ul>
                   {Object.entries(visualizando).map(([key, value]) => (
                     <li key={key}>
@@ -194,40 +174,42 @@ export default function motoristaPage() {
 
       </div>
 
-      <div className={styles.motoristasLista}>
-        <h2>Lista de Motoristas</h2>
+      <div className={styles.clientesLista}>
+        <h2>Lista de Clientes</h2>
         {/*classe local na tabela */}
-        <table className={styles.tabelaMotoristas}>
+        <table className={styles.tabelaClientes}>
           <thead className={styles.tabelaCabecalho}>
             <tr>
               <th>ID</th>
-              <th>Nome</th>
-              <th>CPF</th>
-              <th>Categoria CNH</th>
-              <th>Validade CNH</th>
+              <th>CNPJ</th>
+              <th>Razão Social</th>
+              <th>Email</th>
               <th>Telefone</th>
-              <th>E-mail</th>
+              <th>CEP</th>
+              <th>Logradouro</th>
+              <th>Cidade</th>
               <th>Ações</th>
             </tr>
           </thead>
-          <tbody className={styles.tabelaCorpo} id="tabela-motoristas">
-            {motoristas.map((v) => (
+          <tbody className={styles.tabelaCorpo} id="tabela-cliente">
+            {clientes.map((v) => (
               <tr key={v.id}>
                 <td>{v.id}</td>
-                <td>{v.nome}</td>
-                <td>{v.cpf}</td>
-                <td>{v.categoria_cnh}</td>
-                <td>{v.validade_cnh}</td>
-                <td>{v.telefone}</td>
+                <td>{v.cnpj}</td>
+                <td>{v.razao_social}</td>
                 <td>{v.email}</td>
+                <td>{v.telefone}</td>
+                <td>{v.cep}</td>
+                <td>{v.logradouro}</td>
+                <td>{v.cidade}</td>
                 <td>
                   <button className={styles.btnEditar} onClick={() => carregarParaEdicao(v.id)}>
                     Editar
                   </button>
-                  <button className={styles.btnExcluir} onClick={() => deletarMotoristas(v.id)}>
+                  <button className={styles.btnExcluir} onClick={() => deletarCliente(v.id)}>
                     Excluir
                   </button>
-                  <button className={styles.btnDetalhes} onClick={() => DetalhesMotorista(v.id)}>
+                  <button className={styles.btnDetalhes} onClick={() => DetalhesCliente(v.id)}>
                     Exibir
                   </button>
                 </td>

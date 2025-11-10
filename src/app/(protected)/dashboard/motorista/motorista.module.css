@@ -8,13 +8,15 @@
   min-height: 100vh;
 }
 
-/* container formulario*/
+
+
+/*container formulario*/
 .container {
   background: #fff;
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-  max-width: 700px;
+  max-width: 900px;
   width: 100%;
 }
 
@@ -25,10 +27,9 @@
   font-size: 26px;
 }
 
-/*formulario*/
 .formMotorista {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
 }
 
@@ -39,8 +40,21 @@
   font-size: 1rem;
 }
 
+.formMotorista input[name="nome"] {
+  grid-column: 1 / -1;
+}
+
+.formMotorista input[name="logradouro"] {
+  grid-column: 1 / -1;
+}
+
+.formMotorista input[name="email"] {
+  grid-column: 1 / -1;
+}
+
 .formMotorista button {
-  grid-column: span 2;
+  grid-column: 1/ -1;
+  
   padding: 0.8rem;
   background: #0202a8;
   color: white;
@@ -55,6 +69,18 @@
 .formMotorista button:hover {
   background: #0303ce;
 }
+
+.formMotorista h3 {
+  grid-column: 1 / -1;
+  color: #1c2233;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+
+
+
+
 
 @media (max-width: 600px) {
   .formMotorista {
@@ -88,17 +114,6 @@
  
 }
 
-/* .tabela thead {
-  background-color: #2980b9;
-  color: #fff;
-} */
-/* 
-.tabela thead th {
-  padding: 8px 5px;
-  text-align: cen;
-  font-size: 12px;
-} */
-
 .tabelaMotoristas thead th {
   background-color: #bfbfc2;
   color: #000000;
@@ -110,6 +125,7 @@
   border-collapse: collapse;
   text-align: center;
   max-width: 1500px;
+  font-size: 14px;
 }
 
 .tabelaMotoristas th,
@@ -178,7 +194,7 @@
 /*botões*/
 .btnEditar,
 .btnExcluir,
-.btnVisualizar,
+.btnDetalhes,
 .btnFechar {
   padding: 6px 10px;
   border: none;
@@ -206,10 +222,10 @@
   background-color: #c0392b;
 }
 
-.btnVisualizar {
+.btnDetalhes {
   background-color: rgb(2, 179, 2);
 }
-.btnVisualizar:hover {
+.btnDetalhes:hover {
   background-color: rgb(0, 128, 0);
 }
 
@@ -220,3 +236,148 @@
   background-color: rgb(0, 128, 0);
 }
 
+
+
+
+
+@media (max-width: 820px) {
+  .pageContainer {
+    padding: 1rem 0.6rem;
+  }
+
+
+  .container {
+    max-width: 100%;
+    width: calc(100% - 1.2rem);
+    padding: 1.2rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  /* deixa o formulario com 1 coluna */
+  .formMotorista {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 0.7rem;
+  }
+
+  .formMotorista input,
+  .formMotorista select,
+  .formMotorista textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.95rem;
+    padding: 0.55rem;
+  }
+
+
+  .formMotorista button {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 0.95rem;
+  }
+
+  .motoristasLista {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    overflow-x: auto;
+    box-sizing: border-box;
+  }
+
+ 
+  .tabelaMotoristas {
+    min-width: 700px; 
+    font-size: 13px;
+  }
+
+  .tabelaMotoristas th,
+  .tabelaMotoristas td {
+    padding: 8px 6px;
+  }
+
+  .btnEditar,
+  .btnExcluir,
+  .btnVisualizar {
+    padding: 5px 8px;
+    font-size: 11px;
+    margin-right: 4px;
+  }
+
+ /* ajusta o pop-up */
+  .popupContent {
+    width: 94%;
+    max-height: 86vh;
+    overflow-y: auto;
+  }
+}
+
+/* telas pequenas */
+@media (max-width: 420px) {
+  .container h1 {
+    font-size: 20px;
+  }
+
+  .formMotorista input {
+    font-size: 0.9rem;
+    padding: 0.45rem;
+  }
+
+  .motoristasLista {
+    padding: 0.8rem;
+  }
+
+  .pageContainer, .container, .motoristasLista {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+
+/*Versão mais compacta*/
+@media (max-width: 768px) {
+  /* Esconde colunas */
+  .tabelaMotoristas th:nth-child(n+3):not(:last-child),
+  .tabelaMotoristas td:nth-child(n+3):not(:last-child) {
+    display: none;
+  }
+
+  /* mostra id e nome */
+  .tabelaMotoristas th:nth-child(1),
+  .tabelaMotoristas td:nth-child(1),
+  .tabelaMotoristas th:nth-child(2),
+  .tabelaMotoristas td:nth-child(2) {
+    display: table-cell;
+  }
+
+  /* mostra os botões */
+  .tabelaMotoristas th:last-child,
+  .tabelaMotoristas td:last-child {
+    display: table-cell;
+  }
+
+  
+  .tabelaMotoristas th,
+  .tabelaMotoristas td {
+    padding: 8px 6px;
+    font-size: 13px;
+    text-align: left;
+  }
+
+  .tabelaMotoristas {
+    width: 100%;
+    min-width: auto;
+    table-layout: auto;
+  }
+
+  .tabelaMotoristas tr {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .btnEditar,
+  .btnExcluir,
+  .btnDetalhes {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+}
