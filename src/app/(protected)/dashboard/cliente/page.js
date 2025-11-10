@@ -137,12 +137,14 @@ export default function ClientesPage() {
         <h1>Cadastro de Clientes</h1>
 
         <form onSubmit={handleSubmit} className={styles.formCliente}>
-          <input name="cnpj" placeholder="CNPJ" value={form.cnpj} onChange={handleChange} required />
+          <h3>Dados do Cliente</h3>
           <input name="razao_social" placeholder="Razão Social" value={form.razao_social} onChange={handleChange} required />
-          <input name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
+          <input name="cnpj" placeholder="CNPJ" value={form.cnpj} onChange={handleChange} required />
           <input name="telefone" placeholder="Telefone" value={form.telefone} onChange={handleChange} />
-          <input name="cep" placeholder="CEP" value={form.cep} onChange={handleChange} />
+          <input name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
+          <h3>Endereço</h3>
           <input name="logradouro" placeholder="Logradouro" value={form.logradouro} onChange={handleChange} />
+          <input name="cep" placeholder="CEP" value={form.cep} onChange={handleChange} />
           <input name="numero" placeholder="Número" value={form.numero} onChange={handleChange} />
           <input name="complemento" placeholder="Complemento" value={form.complemento} onChange={handleChange} />
           <input name="bairro" placeholder="Bairro" value={form.bairro} onChange={handleChange} />
@@ -150,7 +152,7 @@ export default function ClientesPage() {
           <input name="estado" placeholder="UF" value={form.estado} onChange={handleChange} />
 
           <button id="btn-salvar" type="submit">
-            {editando ? "Salvar Alterações" : "Cadastrar clente"}
+            {editando ? "Salvar Alterações" : "Cadastrar cliente"}
           </button>
         </form>
 

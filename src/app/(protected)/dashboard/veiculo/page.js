@@ -117,17 +117,20 @@ export default function VeiculoPage() {
         <h1>Cadastro de Veículos</h1>
 
         <form onSubmit={handleSubmit} className={styles.formVeiculo}>
-          <input name="placa" placeholder="Placa" value={form.placa} onChange={handleChange} required />
+          <h3>Modelo</h3>
           <input name="modelo" placeholder="Modelo Veículo" value={form.modelo} onChange={handleChange} required />
           <input name="marca" placeholder="Marca do Veículo" value={form.marca} onChange={handleChange} required />
+          <h3>Dados do Veículo</h3>
+          <input name="placa" placeholder="Placa" value={form.placa} onChange={handleChange} required />
           <input name="renavan" placeholder="Renavan" value={form.renavan} onChange={handleChange} required />
           <input name="chassi" placeholder="Chassi" value={form.chassi} onChange={handleChange} required />
-          <input name="cor" placeholder="Cor" value={form.cor} onChange={handleChange} required />
-          <input name="tipo" placeholder="Tipo de Veículo" value={form.tipo} onChange={handleChange} required />
-          <input name="peso_maximo_kg" placeholder="Peso Máximo (kg)" value={form.peso_maximo_kg} onChange={handleChange} />
           <input name="ano_modelo" placeholder="Ano Modelo" value={form.ano_modelo} onChange={handleChange} />
           <input name="ano_fabricacao" placeholder="Ano de Fabricação" value={form.ano_fabricacao} onChange={handleChange} />
-
+          <input name="cor" placeholder="Cor" value={form.cor} onChange={handleChange} required />
+          <h3>Capacidade de Carga</h3>
+          <input name="peso_maximo_kg" placeholder="Peso Máximo (kg)" value={form.peso_maximo_kg} onChange={handleChange} />
+          <input name="tipo" placeholder="Tipo de Veículo" value={form.tipo} onChange={handleChange} required />
+          
           <button id="btn-salvar" type="submit">
             {editando ? "Salvar Alterações" : "Cadastrar veículo"}
           </button>

@@ -54,35 +54,6 @@ export default function motoristaPage() {
 
 
 
-  // AJUSTAR AJUSTAR AJUSTAR
-  // async function handleSubmit(e) {
-  //   e.preventDefault();
-  //   const method = editando ? "PUT" : "POST";
-  //   const url = editando ? `${apiUrl}/${editando}` : apiUrl;
-
-  //   try {
-  //     const response = await fetch(url, {
-  //       method,
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({
-
-  //       }),
-  //     });
-
-  //     if (!response.ok) {
-  //       alert("Erro ao salvar motorista.");
-  //       return;
-  //     }
-
-  //     limparFormulario();
-  //     carregarMotoristas();
-  //     alert(editando ? "Motorista atualizado!" : "Motorista cadastrado!");
-  //   } catch (error) {
-  //     console.error("Erro ao salvar motoristas:", error);
-  //   }
-  // }
-  // AJUSTAR AJUSTAR AJUSTAR
-
   async function handleSubmit(e) {
   e.preventDefault();
   const method = editando ? "PUT" : "POST";
@@ -179,18 +150,21 @@ export default function motoristaPage() {
         <h1>Cadastro de Motoristas</h1>
 
         <form onSubmit={handleSubmit} className={styles.formMotorista}>
+          <h3>Dados Pessoais</h3>
           <input name="nome" placeholder="Nome" value={form.nome} onChange={handleChange} required />
           <input name="cpf" placeholder="CPF" value={form.cpf} onChange={handleChange} required />
           <input name="rg" placeholder="RG" value={form.rg} onChange={handleChange} required />
           <input name="salario" placeholder="Salário" value={form.salario} onChange={handleChange} required />
-          <input type="date" name="data_nascimento" value={form.data_nascimento} onChange={handleChange} required />
-          <input name="numero_cnh" placeholder="CNH" value={form.numero_cnh} onChange={handleChange} required />
-          <input name="categoria_cnh" placeholder="Categoria CNH" value={form.categoria_cnh} onChange={handleChange} required />
-          <input type="date" name="validade_cnh" placeholder="Validade CNH" value={form.validade_cnh} onChange={handleChange} />
+          <input type="text" name="data_nascimento" placeholder="Data de Nascimento" value={form.data_nascimento} onFocus={(e) => (e.target.type = "date")} onBlur={(e) => { if (!e.target.value) e.target.type = "text"; }} onChange={handleChange} required/>
           <input name="telefone" placeholder="Telefone" value={form.telefone} onChange={handleChange} />
           <input name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
-          <input name="cep" placeholder="CEP" value={form.cep} onChange={handleChange} />
+          <h3>Habilitação</h3>
+          <input name="numero_cnh" placeholder="CNH" value={form.numero_cnh} onChange={handleChange} required />
+          <input name="categoria_cnh" placeholder="Categoria CNH" value={form.categoria_cnh} onChange={handleChange} required />
+          <input type="text" name="validade_cnh" placeholder="Validade CNH" value={form.validade_cnh} onFocus={(e) => (e.target.type = "date")} onBlur={(e) => { if (!e.target.value) e.target.type = "text"; }} onChange={handleChange} required/>
+          <h3>Endereço</h3>
           <input name="logradouro" placeholder="Logradouro" value={form.logradouro} onChange={handleChange} />
+          <input name="cep" placeholder="CEP" value={form.cep} onChange={handleChange} />
           <input name="numero" placeholder="Número" value={form.numero} onChange={handleChange} />
           <input name="complemento" placeholder="Complemento" value={form.complemento} onChange={handleChange} />
           <input name="bairro" placeholder="Bairro" value={form.bairro} onChange={handleChange} />

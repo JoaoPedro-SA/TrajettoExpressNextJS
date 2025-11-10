@@ -8,13 +8,15 @@
   min-height: 100vh;
 }
 
-/* container formulario*/
+
+
+/*container formulario*/
 .container {
   background: #fff;
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-  max-width: 700px;
+  max-width: 900px;
   width: 100%;
 }
 
@@ -25,10 +27,9 @@
   font-size: 26px;
 }
 
-/*formulario*/
 .formMotorista {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
 }
 
@@ -39,8 +40,21 @@
   font-size: 1rem;
 }
 
+.formMotorista input[name="nome"] {
+  grid-column: 1 / -1;
+}
+
+.formMotorista input[name="logradouro"] {
+  grid-column: 1 / -1;
+}
+
+.formMotorista input[name="email"] {
+  grid-column: 1 / -1;
+}
+
 .formMotorista button {
-  grid-column: span 2;
+  grid-column: 1/ -1;
+  
   padding: 0.8rem;
   background: #0202a8;
   color: white;
@@ -55,6 +69,18 @@
 .formMotorista button:hover {
   background: #0303ce;
 }
+
+.formMotorista h3 {
+  grid-column: 1 / -1;
+  color: #1c2233;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+
+
+
+
 
 @media (max-width: 600px) {
   .formMotorista {
